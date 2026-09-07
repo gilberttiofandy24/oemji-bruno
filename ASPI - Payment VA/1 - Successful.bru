@@ -12,8 +12,8 @@ post {
 
 headers {
   Content-Type: application/json
-  X-TIMESTAMP: 2026-09-07T11:42:05+07:00
-  X-SIGNATURE: Rv9d1/5WusMbQqiz65bWK8vfa/HmilC7PMppMA0YTcYR+AucTGDKKsOFZdWLydAfl57bJwCV+KMTmmWdJDTw6Q==
+  X-TIMESTAMP: 2026-09-07T16:08:16+07:00
+  X-SIGNATURE: XFJA/8MfyEyeA7h4fFq8ArhsEgdJE/Wr2HSQDYJCi4uvsyJ5gaFNqRlkwx51sNremQOX9XkmOzbfY/oMA7cuxg==
   X-PARTNER-ID: ASPI
   X-EXTERNAL-ID: 12345
   CHANNEL-ID: 95221
@@ -23,21 +23,21 @@ body:json {
   {
     "partnerServiceId": "",
     "customerNo": "",
-    "virtualAccountNo": "1900826394252798",
+    "virtualAccountNo": "1900826398902387",
     "virtualAccountName": "Oemji Store",
-    "paymentRequestId": "aspi-test-002",
+    "paymentRequestId": "aspi-test-004",
     "paidAmount": {
-      "value": "32000.00",
+      "value": "153875.00",
       "currency": "IDR"
     }
   }
 }
 
 docs {
-  Ini beneran nandain order OEMJI-260907042740-LWZNQV4C jadi settlement dan
-  trigger topup ke Digiflazz sandbox. Sudah pernah dijalankan sekali (sukses,
-  2002500) -- aman dijalankan ulang, order yang sudah settlement tidak
-  di-fulfill dua kali (guard idempotensi di FulfillPaidOrder).
+  Order OEMJI-260907084916-O3XV1H6P -- checkout ini dibuat SETELAH fix bug
+  order_id (§31 CLAUDE.md), jadi linknya ke payments dipastikan benar.
+  Sudah dijalankan, sukses (2002500), VA ini sekarang settlement -- aman
+  dijalankan ulang (idempoten).
 }
 
 assert {

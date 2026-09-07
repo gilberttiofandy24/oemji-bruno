@@ -12,8 +12,8 @@ post {
 
 headers {
   Content-Type: application/json
-  X-TIMESTAMP: 2026-09-07T11:48:51+07:00
-  X-SIGNATURE: WclBu+mHcFbzlV7hBbM4m/8xbOqNXclHqsaVNgCG2D2/IMI46HLYKJWps/6PDv7v7OAPYm1IBk+1JeLhvkgSXw==
+  X-TIMESTAMP: 2026-09-07T15:52:12+07:00
+  X-SIGNATURE: flLCNP7qGULq64OvHn/AzUmga7dpt8R8tA1Vtxn+HlUUQftR+Peu+9xn3Xce0cncu8i93A/1+bcXbwnu0h6OXw==
   X-PARTNER-ID: ASPI
   X-EXTERNAL-ID: 12345
   CHANNEL-ID: 95221
@@ -23,13 +23,18 @@ body:json {
   {
     "partnerServiceId": "",
     "customerNo": "",
-    "virtualAccountNo": "1900826394252798",
+    "virtualAccountNo": "1900826398902387",
     "paymentRequestId": "aspi-test-wrongamount",
     "paidAmount": {
       "value": "99999.00",
       "currency": "IDR"
     }
   }
+}
+
+docs {
+  Order OEMJI-260907084916-O3XV1H6P, amount asli 153875.00 -- sengaja
+  dikirim 99999.00 buat trigger Invalid Amount.
 }
 
 assert {

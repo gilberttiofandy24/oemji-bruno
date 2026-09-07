@@ -17,12 +17,16 @@ auth:bearer {
 body:json {
   {
     "partnerServiceId": "   19008",
-    "customerNo": "26394252798",
-    "virtualAccountNo": "   1900826394252798",
+    "customerNo": "26342751847",
+    "virtualAccountNo": "   1900826342751847",
     "additionalInfo": {}
   }
 }
 
 docs {
-  Cek status transaksi VA yang dibuat di "1 - Create VA".
+  VA 1900826342751847 (order OEMJI-260907090556-5XI9ML3V) -- dibayar beneran
+  lewat simulator DOKU sendiri, bukan simulasi ASPI. Ini yang seharusnya
+  balik paymentFlagReason "Success", bukan "Pending" seperti percobaan
+  sebelumnya (VA 1900826394252798 yang cuma "dibayar" lewat ASPI Payment VA,
+  tidak pernah nyentuh sistem DOKU beneran).
 }

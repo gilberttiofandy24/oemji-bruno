@@ -12,8 +12,8 @@ post {
 
 headers {
   Content-Type: application/json
-  X-TIMESTAMP: 2026-09-07T13:55:43+07:00
-  X-SIGNATURE: UUJAUW8ShUxqkyBHr3BPUQS2pRaqdzfFWPVZy08cHGBB4Juj1ydiwH0eWffTDZiNvphV1VDspgDcxGsFwiLNiQ==
+  X-TIMESTAMP: 2026-09-07T15:14:26+07:00
+  X-SIGNATURE: vkb53TrVn3yUBLpm0TQ7pjKFIMtrJBHzzN6UaambWdlLYs2Kr0VZpn7wEY5pe5yE4U6Hpp4YAr4gNSDWiNnGyQ==
   X-PARTNER-ID: ASPI
   X-EXTERNAL-ID: 12345
   CHANNEL-ID: 95221
@@ -23,17 +23,13 @@ body:json {
   {
     "partnerServiceId": "",
     "customerNo": "",
-    "virtualAccountNo": "1900826395958745"
+    "virtualAccountNo": "1900826308156878"
   }
 }
 
 docs {
-  Order OEMJI-260907065401-M3BR98UN. Jalankan SQL ini dulu di production
-  sebelum request ini, biar VA-nya dianggap expired:
-
-  update payments
-  set payment_response = jsonb_set(payment_response, '{expiry_time}', '"2020-01-01 00:00:00"')
-  where transaction_id = 'OEMJI-260907065401-M3BR98UN';
+  Order OEMJI-260907081331-WNK22VE9, expiry_time di-backdate manual ke
+  2020-01-01 supaya dianggap kadaluarsa.
 }
 
 assert {
