@@ -1,0 +1,38 @@
+meta {
+  name: 9 - Refund QRIS
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/api/doku/qris/refund
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "originalPartnerReferenceNo": "TESTQR-0002",
+    "partnerRefundNo": "TESTQR-REFUND-0001",
+    "refundAmount": {
+      "value": "10000.00",
+      "currency": "IDR"
+    },
+    "reason": "Testing refund",
+    "additionalInfo": {
+      "approvalCode": "PASTE_APPROVAL_CODE_DARI_PEMBAYARAN_ASLI"
+    }
+  }
+}
+
+docs {
+  originalPartnerReferenceNo harus sama dengan partnerReferenceNo dari
+  transaksi QR yang SUDAH DIBAYAR (bukan sekadar di-generate) -- refund
+  tidak bisa dites tanpa ada pembayaran QR beneran lebih dulu.
+  approvalCode didapat dari data pembayaran QRIS yang berhasil (biasanya
+  dari notifikasi/query, bukan dari respons generate).
+}

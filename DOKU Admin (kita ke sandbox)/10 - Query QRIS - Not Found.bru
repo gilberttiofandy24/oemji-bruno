@@ -1,0 +1,22 @@
+meta {
+  name: 10 - Query QRIS - Not Found
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{baseUrl}}/api/doku/qris/query
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "originalPartnerReferenceNo": "TIDAK-PERNAH-ADA-0001",
+    "originalReferenceNo": "TIDAK-PERNAH-ADA-0001"
+  }
+}

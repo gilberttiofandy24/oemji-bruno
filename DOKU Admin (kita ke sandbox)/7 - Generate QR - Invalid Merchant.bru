@@ -1,7 +1,7 @@
 meta {
-  name: 5 - Generate QR MPM
+  name: 7 - Generate QR - Invalid Merchant
   type: http
-  seq: 5
+  seq: 7
 }
 
 post {
@@ -16,11 +16,12 @@ auth:bearer {
 
 body:json {
   {
-    "partnerReferenceNo": "TESTQR-0002",
+    "partnerReferenceNo": "TESTQR-0003",
     "amount": {
       "value": "10000.00",
       "currency": "IDR"
     },
+    "merchantId": "00000000",
     "validityPeriod": "2026-12-31T23:59:59+07:00",
     "additionalInfo": {
       "postalCode": "12345",
@@ -30,6 +31,6 @@ body:json {
 }
 
 docs {
-  merchantId/terminalId boleh dikosongkan -- server isi otomatis dari
-  cfg.Doku.QrisMerchantId/QrisTerminalId.
+  merchantId sengaja diisi angka ngasal (bukan cfg.Doku.QrisMerchantId asli)
+  buat trigger Invalid Merchant.
 }
