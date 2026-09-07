@@ -1,0 +1,40 @@
+meta {
+  name: 3 - Successful
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/v1.1/transfer-va/inquiry
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  X-TIMESTAMP: 2026-09-07T14:18:27+07:00
+  X-SIGNATURE: J8slhMek0VulW86Jdkk7bIqX5dYSZGuavLumdi8nRKt3a2G2au2UovSFhkuWVubCNSwPQiz837SLSuM2MRuMsw==
+  X-PARTNER-ID: ASPI
+  X-EXTERNAL-ID: 12345
+  CHANNEL-ID: 95221
+}
+
+body:json {
+  {
+    "partnerServiceId": "",
+    "customerNo": "",
+    "virtualAccountNo": "1900826326567616"
+  }
+}
+
+docs {
+  Order OEMJI-260907071756-3S1IFWC3, amount 153875.00.
+  Sudah dites sukses (2002400) selagi masih pending. VA ini rencananya
+  akan dibayar via "ASPI - Payment VA" untuk jadi bahan "4 - Bill Has Been
+  Paid" -- kalau itu sudah dijalankan, request ini akan balik 4042414
+  bukan 2002400 lagi.
+}
+
+assert {
+  res.body.responseCode: eq 2002400
+}

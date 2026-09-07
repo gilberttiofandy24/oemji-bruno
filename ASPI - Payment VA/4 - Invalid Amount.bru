@@ -1,0 +1,37 @@
+meta {
+  name: 4 - Invalid Amount
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/v1.1/transfer-va/payment
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  X-TIMESTAMP: 2026-09-07T11:48:51+07:00
+  X-SIGNATURE: WclBu+mHcFbzlV7hBbM4m/8xbOqNXclHqsaVNgCG2D2/IMI46HLYKJWps/6PDv7v7OAPYm1IBk+1JeLhvkgSXw==
+  X-PARTNER-ID: ASPI
+  X-EXTERNAL-ID: 12345
+  CHANNEL-ID: 95221
+}
+
+body:json {
+  {
+    "partnerServiceId": "",
+    "customerNo": "",
+    "virtualAccountNo": "1900826394252798",
+    "paymentRequestId": "aspi-test-wrongamount",
+    "paidAmount": {
+      "value": "99999.00",
+      "currency": "IDR"
+    }
+  }
+}
+
+assert {
+  res.body.responseCode: eq 4042513
+}

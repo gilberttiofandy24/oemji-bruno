@@ -1,0 +1,28 @@
+meta {
+  name: 3 - Inquiry Status VA
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/doku/va/status
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "partnerServiceId": "   19008",
+    "customerNo": "26394252798",
+    "virtualAccountNo": "   1900826394252798",
+    "additionalInfo": {}
+  }
+}
+
+docs {
+  Cek status transaksi VA yang dibuat di "1 - Create VA".
+}

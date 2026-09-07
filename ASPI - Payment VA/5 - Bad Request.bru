@@ -1,0 +1,28 @@
+meta {
+  name: 5 - Bad Request
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/v1.1/transfer-va/payment
+  body: text
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  X-TIMESTAMP: 2026-09-07T11:48:51+07:00
+  X-SIGNATURE: A4V0c9lyyd9/klW8kvZu83Kp7sSZs20Y6X+sxejfxF+DYXV+nEItGJAuRjcUTYBRG+YUPodfM+nVvPRxExMUbw==
+  X-PARTNER-ID: ASPI
+  X-EXTERNAL-ID: 12345
+  CHANNEL-ID: 95221
+}
+
+body:text {
+  {ini bukan json valid
+}
+
+assert {
+  res.body.responseCode: eq 4002500
+}

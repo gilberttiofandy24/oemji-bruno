@@ -1,0 +1,29 @@
+meta {
+  name: 2 - Get JWT
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{authUrl}}/token
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{sessionToken}}
+}
+
+script:post-response {
+  const jwt = res.getBody()?.token;
+  if (jwt) {
+    bru.setVar("adminToken", jwt);
+  }
+}
+
+docs {
+  Ini JWT (ditandatangani asimetris, diverifikasi backend lewat JWKS
+  {{authUrl}}/jwks) yang dipakai middleware.AuthMiddleware() di
+  oemji-backend. Jalankan "1 - Login" dulu baru ini -- script otomatis
+  ngisi {{adminToken}} yang dipakai semua request di folder
+  "DOKU Admin (kita ke sandbox)".
+}

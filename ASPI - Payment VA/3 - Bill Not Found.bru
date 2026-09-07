@@ -1,0 +1,37 @@
+meta {
+  name: 3 - Bill Not Found
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/v1.1/transfer-va/payment
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  X-TIMESTAMP: 2026-09-07T11:48:51+07:00
+  X-SIGNATURE: 6Z3NBHAV5tvrXeVGld/rYbNDmwhRN6Dx7Go3Nyqd6SrgIPXA4x1BJk4jx/Pu21iU+yDN/bWeHS48rbchrgxM/g==
+  X-PARTNER-ID: ASPI
+  X-EXTERNAL-ID: 12345
+  CHANNEL-ID: 95221
+}
+
+body:json {
+  {
+    "partnerServiceId": "",
+    "customerNo": "",
+    "virtualAccountNo": "0888991234567890123456",
+    "paymentRequestId": "aspi-test-notfound",
+    "paidAmount": {
+      "value": "50000.00",
+      "currency": "IDR"
+    }
+  }
+}
+
+assert {
+  res.body.responseCode: eq 4042512
+}

@@ -1,0 +1,35 @@
+meta {
+  name: 5 - Generate QR MPM
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/api/doku/qris
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "partnerReferenceNo": "TESTQR-0001",
+    "amount": {
+      "value": "10000.00",
+      "currency": "IDR"
+    },
+    "validityPeriod": "2026-12-31T23:59:59+07:00",
+    "additionalInfo": {
+      "postalCode": "12345",
+      "feeType": 1
+    }
+  }
+}
+
+docs {
+  merchantId/terminalId boleh dikosongkan -- server isi otomatis dari
+  cfg.Doku.QrisMerchantId/QrisTerminalId.
+}

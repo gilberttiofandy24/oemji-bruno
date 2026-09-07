@@ -1,0 +1,26 @@
+meta {
+  name: 6 - Query Payment QRIS
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/api/doku/qris/query
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "originalPartnerReferenceNo": "TESTQR-0001"
+  }
+}
+
+docs {
+  Isi originalReferenceNo (dari response "5 - Generate QR MPM") kalau
+  originalPartnerReferenceNo saja belum cukup buat DOKU nemuin transaksinya.
+}

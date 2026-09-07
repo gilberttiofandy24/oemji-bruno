@@ -1,0 +1,45 @@
+meta {
+  name: 1 - Successful
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/v1.1/transfer-va/payment
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  X-TIMESTAMP: 2026-09-07T11:42:05+07:00
+  X-SIGNATURE: Rv9d1/5WusMbQqiz65bWK8vfa/HmilC7PMppMA0YTcYR+AucTGDKKsOFZdWLydAfl57bJwCV+KMTmmWdJDTw6Q==
+  X-PARTNER-ID: ASPI
+  X-EXTERNAL-ID: 12345
+  CHANNEL-ID: 95221
+}
+
+body:json {
+  {
+    "partnerServiceId": "",
+    "customerNo": "",
+    "virtualAccountNo": "1900826394252798",
+    "virtualAccountName": "Oemji Store",
+    "paymentRequestId": "aspi-test-002",
+    "paidAmount": {
+      "value": "32000.00",
+      "currency": "IDR"
+    }
+  }
+}
+
+docs {
+  Ini beneran nandain order OEMJI-260907042740-LWZNQV4C jadi settlement dan
+  trigger topup ke Digiflazz sandbox. Sudah pernah dijalankan sekali (sukses,
+  2002500) -- aman dijalankan ulang, order yang sudah settlement tidak
+  di-fulfill dua kali (guard idempotensi di FulfillPaidOrder).
+}
+
+assert {
+  res.body.responseCode: eq 2002500
+}

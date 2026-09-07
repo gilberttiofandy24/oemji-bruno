@@ -1,0 +1,41 @@
+meta {
+  name: 6 - Bill Expired
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/v1.1/transfer-va/inquiry
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  X-TIMESTAMP: 2026-09-07T13:55:43+07:00
+  X-SIGNATURE: UUJAUW8ShUxqkyBHr3BPUQS2pRaqdzfFWPVZy08cHGBB4Juj1ydiwH0eWffTDZiNvphV1VDspgDcxGsFwiLNiQ==
+  X-PARTNER-ID: ASPI
+  X-EXTERNAL-ID: 12345
+  CHANNEL-ID: 95221
+}
+
+body:json {
+  {
+    "partnerServiceId": "",
+    "customerNo": "",
+    "virtualAccountNo": "1900826395958745"
+  }
+}
+
+docs {
+  Order OEMJI-260907065401-M3BR98UN. Jalankan SQL ini dulu di production
+  sebelum request ini, biar VA-nya dianggap expired:
+
+  update payments
+  set payment_response = jsonb_set(payment_response, '{expiry_time}', '"2020-01-01 00:00:00"')
+  where transaction_id = 'OEMJI-260907065401-M3BR98UN';
+}
+
+assert {
+  res.body.responseCode: eq 4042419
+}

@@ -1,0 +1,30 @@
+meta {
+  name: 4 - Delete VA
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{baseUrl}}/api/doku/va
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "partnerServiceId": "   19008",
+    "customerNo": "26370700702",
+    "virtualAccountNo": "   1900826370700702",
+    "trxId": "TESTVA-0002",
+    "additionalInfo": {}
+  }
+}
+
+docs {
+  Jalankan paling akhir -- setelah ini VA test di atas sudah tidak bisa dipakai
+  lagi buat "3 - Inquiry Status VA".
+}

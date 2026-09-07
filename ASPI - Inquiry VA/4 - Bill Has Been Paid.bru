@@ -1,0 +1,32 @@
+meta {
+  name: 4 - Bill Has Been Paid
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/v1.1/transfer-va/inquiry
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  X-TIMESTAMP: 2026-09-07T11:46:34+07:00
+  X-SIGNATURE: p5AhoAbgRS9M7GqNJoYbYWB8MNyioNUsgtjkYWiN5+jHAfKvJVfjhz33u5VPw1dzy5cvLXEMUqKlaoHYX6yWKQ==
+  X-PARTNER-ID: ASPI
+  X-EXTERNAL-ID: 12345
+  CHANNEL-ID: 95221
+}
+
+body:json {
+  {
+    "partnerServiceId": "",
+    "customerNo": "",
+    "virtualAccountNo": "1900826394252798"
+  }
+}
+
+assert {
+  res.body.responseCode: eq 4042414
+}

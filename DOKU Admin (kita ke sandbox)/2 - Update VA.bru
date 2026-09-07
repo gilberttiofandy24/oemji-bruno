@@ -1,0 +1,43 @@
+meta {
+  name: 2 - Update VA
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseUrl}}/api/doku/va
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "partnerServiceId": "   19008",
+    "customerNo": "26370700702",
+    "virtualAccountNo": "   1900826370700702",
+    "virtualAccountName": "Oemji Test Updated",
+    "virtualAccountEmail": "info@oemjistore.com",
+    "trxId": "TESTVA-0002",
+    "totalAmount": {
+      "value": "15000.00",
+      "currency": "IDR"
+    },
+    "additionalInfo": {
+      "channel": "VIRTUAL_ACCOUNT_BCA",
+      "virtualAccountConfig": {
+        "reusableStatus": false
+      }
+    },
+    "virtualAccountTrxType": "C",
+    "expiredDate": "2026-12-31T23:59:59+07:00"
+  }
+}
+
+docs {
+  Jalankan setelah "1 - Create VA" sukses, virtualAccountNo/trxId harus persis
+  sama dengan yang dipakai waktu create.
+}

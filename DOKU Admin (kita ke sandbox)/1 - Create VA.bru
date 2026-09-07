@@ -1,0 +1,49 @@
+meta {
+  name: 1 - Create VA
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/doku/va
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "partnerServiceId": "   19008",
+    "customerNo": "26370700702",
+    "virtualAccountNo": "   1900826370700702",
+    "virtualAccountName": "Oemji Test",
+    "virtualAccountEmail": "info@oemjistore.com",
+    "trxId": "TESTVA-0002",
+    "totalAmount": {
+      "value": "10000.00",
+      "currency": "IDR"
+    },
+    "additionalInfo": {
+      "channel": "VIRTUAL_ACCOUNT_BCA",
+      "virtualAccountConfig": {
+        "reusableStatus": false
+      }
+    },
+    "virtualAccountTrxType": "C",
+    "expiredDate": "2026-12-31T23:59:59+07:00"
+  }
+}
+
+docs {
+  partnerServiceId/customerNo di sini pakai punya BCA yang sudah dikonfigurasi
+  di payment_methods (19008 / prefix 263) -- ganti trxId dan digit unik di
+  customerNo/virtualAccountNo tiap kali biar tidak bentrok VA yang sudah ada.
+  
+  PENTING: virtualAccountNo HARUS persis partnerServiceId + customerNo,
+  spasi di partnerServiceId ikut disertakan ("   19008" + "26399999901" =
+  "   1900826399999901"). DOKU nolak (4032715 Transaction Not Permitted)
+  kalau spasinya dihilangkan.
+}

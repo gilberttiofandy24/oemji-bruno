@@ -1,0 +1,32 @@
+meta {
+  name: 2 - Invalid Signature
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/v1.1/transfer-va/inquiry
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  X-TIMESTAMP: 2026-09-07T11:02:20+07:00
+  X-SIGNATURE: CS7MrL86T/iBeQxSjkZs0afbBigyHTULevgX292nJaFqqxhEyR2715Ha7xqMvgJSJS7YEgpDD8YH2Yi+2//b3gXX
+  X-PARTNER-ID: ASPI
+  X-EXTERNAL-ID: 12345
+  CHANNEL-ID: 95221
+}
+
+body:json {
+  {
+    "partnerServiceId": "  088899",
+    "customerNo": "1234567890123456",
+    "virtualAccountNo": "0888991234567890123456"
+  }
+}
+
+assert {
+  res.body.responseCode: eq 4012401
+}
